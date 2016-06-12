@@ -3,7 +3,6 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Угадайка на двоих</title>
-	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 	<div id="header">
@@ -44,9 +43,9 @@
 
 			document.write(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" ");
 			if (attempt_of_active_player > secret_number)
-				document.write("<b>перелет</b><br>");
+				alert('<b style="color: crimson">перелет</b><br>');
 			if (attempt_of_active_player < secret_number)
-				document.write("<strong>недолет</strong><br>");
+				alert('<strong style="color: coral">недолет</strong><br>');
 			if (attempt_of_active_player == secret_number)
 				continue
 
@@ -64,7 +63,7 @@
 		Думал continue не подойдет к do-while*/
 
 		if (attempt_of_active_player == secret_number)
-			document.write("Поздравляем! Вы угадали!<br><br><h1>Победил "+active_player+"</h1>");
+			document.write('Поздравляем! Вы угадали!<br><br><h1 style="color: green">Победил "+active_player+"</h1>');
 		else
 			document.write("<h2>К сожалению никому не удалось угадать! Попробуйте еще раз</h2>");
 	</script>
