@@ -41,9 +41,9 @@
 
 			document.write(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" ");
 			if (attempt_of_active_player > secret_number)
-				alert('<b style="color: crimson">перелет</b><br>');
+				document.write('<b style="color: crimson">перелет</b><br>');
 			if (attempt_of_active_player < secret_number)
-				alert('<strong style="color: coral">недолет</strong><br>');
+				document.write('<strong style="color: coral">недолет</strong><br>');
 			if (attempt_of_active_player == secret_number)
 				continue
 
