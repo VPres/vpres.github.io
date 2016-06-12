@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Угадайка на двоих</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<div id="header">
+		<a href="../index.html">Главная</a>
+	</div>
+	<script type="text/javascript">
+		var min = 1;
+		var max = 100;
+		var number_of_attempts = 0;
+		var max_number_of_attempts = 10;
+		var secret_number = Math.floor(Math.random() * ((max + 1) - min)) + min;
+		var attempt_of_active_player;
+		var active_player;
+		//var winner;
+		document.write("Добро пожаловать в игру 'Угадайка на двоих'!<br>Компьютер загадал число от "+min+" до "+max+". Количество попыток для каждого игрока "+max_number_of_attempts / 2+"<br>");
+		var player1 = prompt("Введите имя первого игрока:");
+		var player2 = prompt("Введите имя второго игрока:");
+		//var heads_or_tails = Math.round(Math.random()); //Бросок монетки - орел или решка - 0 или 1
+		if (Math.round(Math.random()) == 0)
+			active_player = player1;
+		else
+			active_player = player2;
+		document.write("Право первого хода принадлежит игроку "+active_player+"<br>");
+
+
+
+		do
+		{
+			number_of_attempts++;
+			var active_n_of_a = Math.floor((number_of_attempts + 1) / 2);
+			//№ попытки игрока, определенный по № общих попыток
+			//Math.floor(x/y) - деление без остатка
+
+			if (active_n_of_a == max_number_of_attempts / 2)
+				attempt_of_active_player = +prompt("Ходит "+active_player+". Последняя попытка. Ваш вариант:");
+			else
+				attempt_of_active_player = +prompt("Ходит "+active_player+". "+active_n_of_a+" попытка. Ваш вариант:");
+
+			document.write(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" ");
+			if (attempt_of_active_player > secret_number)
+				document.write("<b>перелет</b><br>");
+			if (attempt_of_active_player < secret_number)
+				document.write("<strong>недолет</strong><br>");
+			if (attempt_of_active_player == secret_number)
+				continue
+
+			if (active_player == player1)
+				active_player = player2;
+			else
+				active_player = player1;
+		}
+		while(attempt_of_active_player != secret_number && number_of_attempts < max_number_of_attempts);
+
+		/*if (active_player == player1)
+			winner = player2;
+		else
+			winner = player1;
+		Думал continue не подойдет к do-while*/
+
+		if (attempt_of_active_player == secret_number)
+			document.write("Поздравляем! Вы угадали!<br><br><h1>Победил "+active_player+"</h1>");
+		else
+			document.write("<h2>К сожалению никому не удалось угадать! Попробуйте еще раз</h2>");
+	</script>
+</body>
+</html>
