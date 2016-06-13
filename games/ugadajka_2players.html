@@ -3,6 +3,109 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Угадайка на двоих</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<div id="header">
+		<a href="../index.html">Главная</a><span>/</span>
+		<a href="ugadajka_2players.html" style="color: #fff">Угадайка на двоих</a><span>/</span>
+		<a href="ugadajka_hardcore.html">Угадайка хардкор</a><span>/</span>
+		<a href="ridd2.0.html">Загадки</a>
+	</div>
+<div id="content">
+	<h1>Угадайка на двоих</h1>
+
+	<h1><input type="button" id="start" value="ИГРАТЬ" onmouseup="gameStart()" /></h1>
+	.<div class="box_text">
+		<p id="outPut" style="color: green; font-weight:bold;" align="center" ></p>
+	</div>
+	<script type="text/javascript">
+		
+		function outPut(str) {
+			document.getElementById('outPut').innerHTML += str;
+		}
+
+		function gameStart () {
+			document.getElementById('outPut').innerHTML = "";
+			var min = 1;
+			var max = 100;
+			var number_of_attempts = 0;
+			var max_number_of_attempts = 10;
+			var secret_number = Math.floor(Math.random() * ((max + 1) - min)) + min;
+			var attempt_of_active_player;
+			var active_player;
+			//var winner;
+			alert("Добро пожаловать в игру 'Угадайка на двоих'!\nКомпьютер загадал число от "+min+" до "+max+". Количество попыток для каждого игрока "+max_number_of_attempts / 2);
+			var player1 = prompt("Введите имя первого игрока:");
+			var player2 = prompt("Введите имя второго игрока:");
+			//var heads_or_tails = Math.round(Math.random()); //Бросок монетки - орел или решка - 0 или 1
+			if (Math.round(Math.random()) == 0)
+				active_player = player1;
+			else
+				active_player = player2;
+			alert("Право первого хода принадлежит игроку "+active_player);
+
+
+
+			do
+			{
+				number_of_attempts++;
+				var active_n_of_a = Math.floor((number_of_attempts + 1) / 2);
+				//№ попытки игрока, определенный по № общих попыток
+				//Math.floor(x/y) - деление без остатка
+
+				if (active_n_of_a == max_number_of_attempts / 2)
+					attempt_of_active_player = +prompt("Ходит "+active_player+". Последняя попытка. Ваш вариант:");
+				else
+					attempt_of_active_player = +prompt("Ходит "+active_player+". "+active_n_of_a+" попытка. Ваш вариант:");
+
+				//alert(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" ");
+				if (attempt_of_active_player > secret_number){
+					outPut(String(active_n_of_a+'. '+active_player+'. '+attempt_of_active_player+' '+'<b style="color: crimson">перелет</b><br>'));
+					alert(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" "+"перелет");
+				}
+				if (attempt_of_active_player < secret_number){
+					outPut(String(active_n_of_a+'. '+active_player+'. '+attempt_of_active_player+' '+'<strong style="color: coral">недолет</strong><br>'));
+					alert(active_player+". "+active_n_of_a+". "+attempt_of_active_player+" "+"недолет");
+				}
+				if (attempt_of_active_player == secret_number)
+					continue
+
+				if (active_player == player1)
+					active_player = player2;
+				else
+					active_player = player1;
+			}
+			while(attempt_of_active_player != secret_number && number_of_attempts < max_number_of_attempts);
+
+			/*if (active_player == player1)
+				winner = player2;
+			else
+				winner = player1;
+			Думал continue не подойдет к do-while*/
+
+			if (attempt_of_active_player == secret_number)
+				outPut(String('<h2>'+active_n_of_a+'. '+active_player+'. '+attempt_of_active_player+'</h2> <h1 style="color: coral">Поздравляем! Вы угадали!</h1><h1 style="color: green">Победил '+active_player+'</h1>'));
+			else
+				outPut(String("<h2 style='color: coral'>К сожалению никому не удалось угадать! Попробуйте еще раз</h2>"));
+		}
+	</script>
+
+</div>
+
+<div id="footer">
+	Copyright © 2016 <a href="https://geekbrains.ru/"> GeekBrains </a>
+</div>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Угадайка на двоих</title>
 </head>
 <body>
 		<a href="../index.html">Главная</a>

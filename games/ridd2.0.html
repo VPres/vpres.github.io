@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Загадки</title>
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<div id="header">
+		<a href="../index.html">Главная</a><span>/</span>
+		<a href="ugadajka_2players.html">Угадайка на двоих</a><span>/</span>
+		<a href="ugadajka_hardcore.html">Угадайка хардкор</a><span>/</span>
+		<a href="ridd2.0.html" style="color: #fff">Загадки</a>
+	</div>
+<div id="content">
+	<h1>Загадки</h1>
+
+	<h1><input type="button" id="start" value="ИГРАТЬ" onmouseup="gameStart()" /></h1>
+	.<div class="box_text">
+		<p id="outPut" style="color: green; font-weight:bold;" align="center" ></p>
+	</div>
+	<script type="text/javascript">
+		
+		function outPut(str) {
+			document.getElementById('outPut').innerHTML = str;
+		}
+
+		function gameStart () {
+			var count = 0;
+			var right = 'жираф';
+			var answ = prompt('Достает своей макушкой\nУ деревьев до верхушки,\nШея, как высокий шарф,\nДобрый, в пятнышках ...\n\n(ответ вводится строчными буквами)');
+
+			if (answ == right){
+				alert('Поздравляю!!! Вы угадали!');
+				count++;
+			}else
+				alert('К сожалению ответ не верный...');
+
+
+			 right = 'водопад';
+			 answ = prompt('Он летит с обрыва вниз,\nО камни разбивается.\nГромче зверя он ревет,\nИ в пену превращается ...\n\n(ответ вводится строчными буквами)');
+
+			if (answ == right){
+				alert('Поздравляю!!! Вы угадали!');
+				count++;
+			}else
+				alert('К сожалению ответ не верный...');
+
+
+			right = 'воробей';
+			answ = prompt('Не пиликает на скрипке,\nНе поет, как соловей,\nА чирикает на ветке\nНаш малышка ...\n\n(ответ вводится строчными буквами)');
+
+			if (answ == right){
+				alert('Поздравляю!!! Вы угадали!');
+				count++;
+			}else
+				alert('К сожалению ответ не верный...');
+
+
+			right = 'буратино';
+			answ = prompt('Вот совсем не трудный,\nКоротенький вопрос:\nКто в чернилку сунул\nДеревянный нос? ...\n\n(ответ вводится строчными буквами)');
+
+			if (answ == right){
+				alert('Поздравляю!!! Вы угадали!');
+				count++;
+			}else
+				alert('К сожалению ответ не верный...');
+
+			outPut(String('Игра окончена.<br />Количество набранных баллов: <h1 style="color: red">' + count + '</h1><br />По одному баллу за каждый правильный ответ.<br />'));
+		}
+	</script>
+
+</div>
+
+<div id="footer">
+	Copyright © 2016 <a href="https://geekbrains.ru/"> GeekBrains </a>
+</div>
+
+</body>
+</html>
